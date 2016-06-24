@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>computation</title>
+	<style>
+		.compute-list{
+			list-style: none;
+		}
+		.compute-item{
+			width: 100px;
+			height: 50px;
+			border: 1px black solid;
+			margin-bottom: 2px;
+			text-align: center;
+		}
+		.compute-item.active{
+			background-color: yellow;
+		}
+	</style>
+</head>
+<body ng-app="computeApp">
+ <div ng-controller="computeController" ng-init="">
+  <ul class="compute-list">
+   <li class="compute-item" ng-repeat="value in list" ng-click="isActive=!isActive; getTotal(isActive, value)" ng-class="{'active': isActive}">{{value}}</li>
+  </ul>
+  <!-- <input type="number" ng-value="total()"> -->
+  <div>{{total}}</div>
+ </div>
+ <script type="text/javascript" src="js/angular.min.js"></script>
+ <script>
+ 	angular.module('computeApp',[])
+ 	.controller('computeController', ['$scope', function($scope){
+ 		$scope.isActive=false; 
+ 		$scope.total=0;
+ 		$scope.list = [300,200,10,1];
+ 		$scope.getTotal = function(isActive, value) {
+ 			$scope.total +=  isActive ? value : -value;
+ 		}
+ 	}])
+ </script>
+</body>
+</html>

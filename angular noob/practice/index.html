@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Novies Mode</title>
+</head>
+<script type="text/javascript" src="js/angular.min.js"></script>
+
+<body ng-app="myApp">
+ <div ng-controller="myController as main">
+	 <input type="text" name="input" ng-model="main.io">
+	 <div>{{main.io}}</div>
+	 <div ng-controller="mySubController as child">
+	 	<div>{{child.io}}</div>
+	 	<button ng-click="fnkick('kiko')">notify</button>
+	 </div>
+ </div>
+
+<script>
+	angular.module('myApp',[])
+	.controller('myController', function($rootScope, $scope, notify){
+		var ctr = 0;
+		$rootScope.fnkick = function (msg) {
+			notify.notify(msg);
+		}
+		$scope.io = 'kiko';
+		console.log($scope);
+	})
+	.controller('mySubController', function($rootScope){
+		this.io = 'jho';
+	})
+	.factory('notify', ['$window', function(win){
+		var input = [];
+		return {
+			notify: function(msg){
+			input.push(msg);
+			if (input.length == 3)
+			{
+				win.alert(input.join('::'));
+				input = [];
+			}
+		}
+		};
+	}])
+</script>
+</body>
+</html>

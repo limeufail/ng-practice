@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inline editor</title>
+</head>
+<body>
+ <div class="container" ng-app="" ng-init="clicked=false; value='Click me'">
+ 	<div class="edit-me-wrap">
+ 		<input type="text" ng-show="clicked" ng-model="value" ng-blur="clicked=!clicked" />
+ 		<a href="#" ng-click="clicked=!clicked; $event.preventDefault();" ng-show="!clicked">{{value}}</a>
+ 	</div>
+ </div>
+ <script src='js/angular.min.js'></script>
+</body>
+</html>
