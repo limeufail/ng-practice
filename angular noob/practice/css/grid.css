@@ -1,0 +1,50 @@
+.grid-wrap{
+	height: 100%;
+}
+.grid{
+	overflow-y: auto;
+    height: 300px;
+}
+.grid-header,
+.grid-content_row{
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	border: 1px black solid;
+	padding: 2px;
+}
+.grid-header_title{
+	flex: 1;
+	text-align: center;
+	cursor: pointer;
+
+	white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.grid-content_data{
+	flex: 1;
+	cursor: pointer;
+}
+.grid-content_row.active{
+	background-color: yellow;
+}
+.sort-asc,
+.sort-desc{
+	font: normal normal normal 14px/1 FontAwesome;
+	position: relative;
+}
+.sort-asc:before{
+	content: '\f0de' !important;
+	position: absolute;
+	right: 0;
+	top: 4px !important;
+}
+
+.sort-desc:before{
+	content: '\f0dd';
+	position: absolute;
+	right: 0;
+	top: -2px;
+}

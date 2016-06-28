@@ -1,0 +1,15 @@
+<div class="grid-wrap">
+ <div class="grid">
+  <button ng-click="addCustomer()">add</button>
+  <div class="grid-header">
+   	<div ng-class="['grid-header_title','sort-desc', {'sort-asc': asc && $index == active}]" ng-click="sortBy($index,title)" ng-repeat="title in headers">
+  		{{title}}
+  	</div>
+  </div>
+  <div class="grid-content">
+    <div ng-class="['grid-content_row', {'active': value === selected}]" ng-click="select(value)" ng-repeat="(key, value) in data">
+     <div class="grid-content_data" ng-repeat="rowData in value">{{rowData}}</div>
+    </div>
+  </div>
+ </div>
+</div>
